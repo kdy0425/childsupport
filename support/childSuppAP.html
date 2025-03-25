@@ -1,0 +1,1814 @@
+<html lang="ko">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>홈 &gt;양육비 이행확보 지원&gt;지원신청&gt;양육비 이행확보 지원신청</title>
+        <link rel="stylesheet" href="https://www.childsupport.or.kr/lib/css/common.css" type="text/css">
+        <link rel="stylesheet" href="../lib/css/sub.css" type="text/css">
+        <link rel="stylesheet" href="../lib/css/article.css" type="text/css">
+        <link rel="stylesheet" href="https://www.childsupport.or.kr/lib/css/jquery.bxslider.css" type="text/css">
+        <link rel="stylesheet" href="https://www.childsupport.or.kr/lib/css/flick/jquery-ui-1.10.4.custom.min.css" type="text/css">
+        <link rel="shortcut icon" href="https://www.childsupport.or.kr/images/common/favicon.ico">
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery-migrate-3.1.0.min.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery-ui-1.12.1.custom.min.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery.lck.util.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery.form.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/lnb.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/sub_use.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/share.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/print-roamlynx.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/common.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/hover.js"></script>
+        <!-- <script src="https://apis.google.com/js/client.js?onload=load"></script> -->
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/check.js"></script>
+        <script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/chksupp.js"></script>
+        <script type="text/javascript" src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+        <script charset="UTF-8" type="text/javascript" src="https://www.childsupport.or.kr//t1.daumcdn.net/postcode/api/core/241220/1734674855782/241220.js"></script>
+        <script>
+            $(document).ready(function() {
+                //if($.inArray(location.pathname, ["/index.do"]) < 0){
+                var title_length = $(".nav>ul>li").length;
+                var title = "";
+                var url = location.pathname + location.search;
+                console.log("title_length : " + title_length);
+                for (var i = 1; i < title_length; i++) {
+                    if (i == 1) {
+                        title += $(".nav>ul>li:eq(" + i + ")").text().trim().replace(/\n|\t| /gim, '');
+                    } else {
+                        title += " > " + $(".nav>ul>li:eq(" + i + ")").text().trim().replace(/\n|\t| /gim, '');
+                    }
+                }
+                if (title == "") {
+                    console.log("title empty");
+                    $('#title_tracking').val("메인");
+                } else {
+                    console.log("title on");
+                    $('#title_tracking').val(title);
+                }
+                var queryString_1 = $("form[name=frmIns]").serialize();
+                $('#queryString_1').val(queryString_1);
+                $('#url_tracking').val(url);
+                console.log("title_tracking : " + title);
+                console.log("url_tracking : " + url);
+                //tracking_params = {"url":location.pathname+location.search,"title":title,"job":"목록"};
+                //}
+            })
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#jnumFrt").keyup(function() { //주민번호
+                    chkNumber($("#jnumFrt"));
+                });
+                $("#jnumEnd").keyup(function() { //주민번호
+                    chkNumber($("#jnumEnd"));
+                });
+                $("#telnoMid").keyup(function() { //일반전화 가운데
+                    chkNumber($("#telnoMid"));
+                });
+                $("#telnoEnd").keyup(function() { //일반전화 끝
+                    chkNumber($("#telnoEnd"));
+                });
+                $("#hpnoMid").keyup(function() { //휴대전화 가운데
+                    chkNumber($("#hpnoMid"));
+                });
+                $("#hpnoEnd").keyup(function() { //휴대전화 끝
+                    chkNumber($("#hpnoEnd"));
+                });
+                $("#telnoMid").keyup(function() { //일반전화 가운데
+                    chkNumber($("#telnoMid"));
+                });
+                $("#acctAccount").keyup(function() { //계좌번호
+                    chkNumber($("#acctAccount"));
+                });
+                $("#btn_doSave").click(function() {
+                    var f = document.frmIns;
+                    if (f.apNm.value == "") {
+                        alert("성명을 입력하세요.");
+                        return false;
+                    }
+                    if (f.jnumFrt.value == "") {
+                        alert("주민등록번호를 입력하세요.");
+                        return false;
+                    }
+                    if (f.jnumEnd.value == "") {
+                        alert("주민등록번호를 입력하세요.");
+                        return false;
+                    }
+                    if (f.hpnoMid.value == "") {
+                        alert("휴대전화를 입력하세요");
+                        return false;
+                    }
+                    if (f.hpnoEnd.value == "") {
+                        alert("휴대전화를 입력하세요");
+                        return false;
+                    }
+                    if (f.telnoMid.value == "") {
+                        alert("전화번호(긴급연락처)를 입력하세요.");
+                        return false;
+                    }
+                    if (f.telnoEnd.value == "") {
+                        alert("전화번호(긴급연락처)를 입력하세요.");
+                        return false;
+                    }
+                    if (f.emailId.value == "") {
+                        alert("E-mail를 입력하세요");
+                        return false;
+                    }
+                    if (f.emailComp.value == "") {
+                        alert("E-mail를 입력하세요");
+                        return false;
+                    }
+                    var emailtxt = $('#emailId').val() + "@" + $('#emailComp').val();
+                    if (!chkEmail(emailtxt)) return false;
+                    if (f.apAddrDe.value == "") {
+                        alert("주소를 입력하세요");
+                        return false;
+                    }
+                    if (f.acctAccount.value == "") {
+                        alert("계좌번호를 입력하세요");
+                        return false;
+                    }
+                    if (f.acctNm.value == "") {
+                        alert("예금주명을 입력하세요");
+                        return false;
+                    }
+                    var jnum = $("#jnumFrt").val() + $("#jnumEnd").val();
+                    resultTxt = chkJuminNumber(jnum); //주민등록번호 유효성체크
+                    if (resultTxt == false) return false;
+                    currRowCnt = $('#currRowCnt').val(); //가족사항 여부 체크
+                    if (currRowCnt == "" || currRowCnt == 0) {
+                        alert("가족사항 정보를 입력하세요.");
+                        return false;
+                    } else {
+                        for (t = 0; t < currRowCnt; t++) {
+                            if ($("input[name=fNm]").eq(t).val() == "") {
+                                alert("가족 성명를 입력하세요");
+                                $("input[name=fNm]").eq(t).focus();
+                                return false;
+                            }
+                            if (currRowCnt > 1) {
+                                if (f.relateApCd[t].value == "0") {
+                                    alert("신청인과의 관계를 선택하세요");
+                                    return false;
+                                }
+                            } else {
+                                if (f.relateApCd.value == "0") {
+                                    alert("신청인과의 관계를 선택하세요");
+                                    return false;
+                                }
+                            }
+                            if (!chkBirth($("input[name=fBirth]").eq(t))) return false;
+                            if (!fnCnkNotTogeTxt(t + 1)) return false;
+                        }
+                    }
+                    /*
+                     * 신청인과 자녀의 생년월일로 신청서 중복체크 
+                     */
+                    dupSupport2(1);
+                    return false;
+                });
+                $("#btn_doBack").click(function() {
+                    var f = document.frmIns;
+                    if (confirm("이전 페이지로 이동시 작성된 내용이 사라집니다.\n이동하시겠습니까?")) {
+                        f.action = "agreeChildSupp.do";
+                        f.submit();
+                    }
+                    return false;
+                });
+                /*
+                 * 문서번호가 있을경우 :  이전페이지 이동을 통한 화면전환시
+                 *
+                 */
+                $('#currRowCnt').val("0");
+                fnRowIns('', '', '', '', '', '', '');
+            });
+
+            function postOpen() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                        var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraRoadAddr += data.bname;
+                        }
+                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                        if (extraRoadAddr !== '') {
+                            extraRoadAddr = ' (' + extraRoadAddr + ')';
+                        }
+                        // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                        if (fullRoadAddr !== '') {
+                            fullRoadAddr += extraRoadAddr;
+                        }
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById('zip').value = data.zonecode; //5자리 새우편번호 사용
+                        document.getElementById('adres').value = fullRoadAddr;
+                        //document.getElementById('detailAdres').value = data.jibunAddress;
+                    }
+                }).open();
+            }
+            var x = 0;
+
+            function fnRowIns(va1, va2, va3, va4, va5, va6, va7) {
+                //relateApCd
+                var arInfo = [{
+                    code: "0",
+                    codeNm: "선택하세요"
+                }, {
+                    code: "004",
+                    codeNm: "자"
+                }, {
+                    code: "005",
+                    codeNm: "손"
+                }, {
+                    code: "999",
+                    codeNm: "기타"
+                }];
+                //lstSchCd
+                var leInfo = [{
+                    code: "0",
+                    codeNm: "선택하세요"
+                }, {
+                    code: "010",
+                    codeNm: "미취학"
+                }, {
+                    code: "020",
+                    codeNm: "초등학교재학"
+                }, {
+                    code: "021",
+                    codeNm: "초등학교졸업"
+                }, {
+                    code: "030",
+                    codeNm: "중학교재학"
+                }, {
+                    code: "031",
+                    codeNm: "중학교졸업"
+                }, {
+                    code: "040",
+                    codeNm: "고등학교재학"
+                }, {
+                    code: "041",
+                    codeNm: "고등학교졸업"
+                }, {
+                    code: "050",
+                    codeNm: "대학교재학"
+                }, {
+                    code: "999",
+                    codeNm: "기타"
+                }];
+                $.ajax({
+                    url: "/support/service_req_family.do",
+                    data: {
+                        count: x + 1
+                    },
+                    dataType: "html",
+                    success: function(data) {
+                        var html = "";
+                        html = $(data);
+                        x++;
+                        if (x == 1) {
+                            $(html).find("div.align").remove();
+                        }
+                        //id name replace
+                        $(html).find("#notTogeTxtDiv_i").attr("id", "notTogeTxtDiv" + x);
+                        $.each($(html).find("label[for*=_i]"), function() {
+                            $(this).attr("for", $(this).attr("for").replace("_i", x));
+                        });
+                        $.each($(html).find("input[name*=_i]"), function() {
+                            var this_id = $(this).attr("id");
+                            var this_name = $(this).attr("name");
+                            $(this).attr("id", this_id.replace("_i", x));
+                            $(this).attr("name", this_name.replace("_i", x));
+                            if ($(this).attr("onclick") != null) {
+                                var this_onclick = $(this).attr("onclick");
+                                $(this).attr("onclick", this_onclick.replace("_i", "'" + x + "'"));
+                            }
+                            if ($(this).attr("onfocus") != null) {
+                                var this_onfocus = $(this).attr("onfocus");
+                                $(this).attr("onfocus", this_onfocus.replace("_i", "'" + x + "'"));
+                            }
+                        });
+                        $.each($(html).find("input[id*=_t]"), function() {
+                            var this_id = $(this).attr("id");
+                            $(this).attr("id", this_id.replace("_t", x));
+                            if ($(this).attr("onclick") != null) {
+                                var this_onclick = $(this).attr("onclick");
+                                $(this).attr("onclick", this_onclick.replace("_t", "'" + x + "'"));
+                            }
+                            if ($(this).attr("onfocus") != null) {
+                                var this_onfocus = $(this).attr("onfocus");
+                                $(this).attr("onfocus", this_onfocus.replace("_t", "'" + x + "'"));
+                            }
+                        });
+                        $.each($(html).find("select[id*=_t]"), function() {
+                            var this_id = $(this).attr("id");
+                            $(this).attr("id", this_id.replace("_t", x));
+                            if ($(this).attr("onclick") != null) {
+                                var this_onclick = $(this).attr("onclick");
+                                $(this).attr("onclick", this_onclick.replace("_t", "'" + x + "'"));
+                            }
+                            if ($(this).attr("onfocus") != null) {
+                                var this_onfocus = $(this).attr("onfocus");
+                                $(this).attr("onfocus", this_onfocus.replace("_t", "'" + x + "'"));
+                            }
+                        });
+                        //select option append
+                        $.each(arInfo, function(i, v) {
+                            $(html).find("#relateApCd" + x).append(" < option value = \"" + v.code + "\">" + v.codeNm + "</option>");
+                            $(html).find("#relateApCd" + x).attr("title", x + "번째 (자/손/기타)에 해당하는 신청인과의 관계를 선택해주세요.");
+                        });
+                        $.each(leInfo, function(i, v) {
+                            $(html).find("#lstSchCd" + x).append(" < option value = \"" + v.code + "\">" + v.codeNm + "</option>");
+                            $(html).find("#lstSchCd" + x).attr("title", x + "번째 (자/손/기타)에 해당하는 학력,재학 여부를 선택해주세요.");
+                        });
+                        /* value setting */
+                        $(html).find("input[id=fNm" + x + "]").val(va1)
+                        $(html).find("input[id=fNm" + x + "]").attr("title", x + "번째 (자/손/기타)에 해당하는 성명");
+                        $(html).find("input[id=fBirth" + x + "]").attr("title", x + "번째 (자/손/기타)에 해당하는 생년월일");
+                        $(html).find("input[id=fRemark" + x + "]").attr("title", x + "번째 비고사항");
+                        if (va2 != "") {
+                            $(html).find("select[id=relateApCd" + x + "]").val(va2)
+                        }
+                        $(html).find("input[id=fBirth" + x + "]").val(va3)
+                        if (va4 != "" && va4 != null) {
+                            $(html).find("input[id=liveTogeCd" + x + "_" + va4 + "]").prop("checked", true);
+                            if (va4 == "N") {
+                                $(html).find("#notTogeTxtDiv" + x).css("display", "block");
+                            }
+                        }
+                        if (va5 != "" && va5 != null) {
+                            $(html).find("input[id=notTogeTxt" + x + "]").val(va5);
+                        }
+                        if (va6 != "" && va6 != null) {
+                            $(html).find("select[id=lstSchCd" + x + "]").val(va6);
+                        }
+                        if (va7 != "" && va7 != null) {
+                            $(html).find("input[id=fRemark" + x + "]").val(va7);
+                        }
+                        $('#rowCnt').val(x);
+                        $('#currRowCnt').val($('#currRowCnt').val() * 1 + 1);
+                        $("#family_table").append($(html));
+                    }
+                })
+                return false;
+            }
+
+            function goSubm() {
+                var f = document.frmIns;
+                $('#job_tracking').val("글 등록");
+                f.action = "insCSMProc.do";
+                f.submit();
+            }
+
+            function rowDel(val) {
+                $(val).parent().parent().parent().parent().remove();
+                /* $("#family_table>div:eq("+num+")").remove(); */
+                $('#currRowCnt').val($('#currRowCnt').val() - 1);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <link href="https://www.childsupport.or.kr/lib/css/redmond/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" type="text/css">
+            <div id="skipNavi">
+                <a href="#main_contents" class="main_skip">본문으로 바로가기</a>
+                <a href="#sub" class="sub_skip">본문으로 바로가기</a>
+                <a href="#gnavi">메뉴로 바로가기</a>
+            </div>
+            <div id="header">
+                <div class="h_wrap">
+                    <div class="h_logo">
+                        <h1 tabindex="0">
+                            <a href="https://www.childsupport.or.kr/index.do" id="header_logo">
+                                <img src="https://www.childsupport.or.kr/images/header/logo.gif" alt="양육비이행관리원 Child Support Agency">
+                            </a>
+                        </h1>
+                        <!-- 			
+			<div class="main_tit"><img src="https://www.childsupport.or.kr/images/header/main_tit1.gif" alt="양육비는 사랑입니다." /><img src="https://www.childsupport.or.kr/images/header/main_tit2.gif" class="none" alt="양육비는 걱정 없는 대한민국, 양육비이행관리원이 만들어 가겠습니다" /><img src="https://www.childsupport.or.kr/images/header/main_tit3.gif" class="none" alt="건강하고 행복한 자녀가 우리의 미래입니다." /></div>
+			 -->
+                        <!-- main_tit -->
+                    </div>
+                    <div class="utill_wrap">
+                        <div class="utill">
+                            <ul>
+                                <li>트라이언 님 환영합니다. <span class="profileicob1">최종접속시간 2025-03-15 22:19:22</span>
+                                    <span id="time_count" style="margin-left:10px;">남은시간 29:41</span>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/index.do">처음으로</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/logout.do">로그아웃</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T1C89/sublink.do">마이페이지</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T6C7/sitemap/intro.do">사이트맵</a>
+                                </li>
+                                <li class="txt_zoom">글자크기 <a href="javascript:zoomIn()" id="browser_plus">
+                                        <img src="https://www.childsupport.or.kr/images/header/plus.gif" alt="글자크기 확대">
+                                    </a>
+                                    <a href="javascript:zoomOut()" id="browser_minus">
+                                        <img src="https://www.childsupport.or.kr/images/header/minus.gif" alt="글자크기 축소">
+                                    </a>
+                                </li>
+                                <!-- <li class="lst"><a href="https://www.childsupport.or.kr/eng">ENGLISH</a></li> -->
+                            </ul>
+                        </div>
+                        <div class="search">
+                            <form action="/lay3/program/S1T1C1026/total/search.do" method="get" name="searchFrm" id="totalSearchFrm">
+                                <input type="hidden" name="egovframework.double.submit.preventer.parameter.name" value="3559FEA5-B900-4AB2-8B97-A3001E25223A">
+                                <input type="hidden" id="locationTitle" name="title" value="양육비이행확보지원 > 지원신청 > 양육비이행확보지원신청">
+                                <input type="hidden" id="locationurl" name="url" value="/lay1/program/S1T23C24/support/childSuppAP.do">
+                                <input type="hidden" id="job" name="job" value="검색">
+                                <input type="hidden" id="queryString" name="params" value="">
+                                <input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요." title="검색어 입력">
+                                <input type="image" src="https://www.childsupport.or.kr/images/header/sch_btn.gif" alt="검색">
+                            </form>
+                        </div>
+                    </div>
+                    <!--		<p class="kihf"><a href="http://www.kihf.or.kr" target="_blank" title="새창열림"><img src="https://www.childsupport.or.kr/images/header/kihf.gif" alt="한국건강가정진흥원" /></a></p> -->
+                    <div class="side_menu btnCtg">
+                        <a href="#">
+                            <img src="https://www.childsupport.or.kr/images/header/m_menu_btn.gif" alt="모바일 메뉴">
+                        </a>
+                    </div>
+                </div>
+                <!-- h_wrap -->
+                <div class="lnb" id="gnavi" style="height:56px;">
+                    <div class="lnb_bg" style="display:none"></div>
+                    <ul>
+                        <li class="l_title1 on">
+                            <a href="https://www.childsupport.or.kr/lay1/S1T1C8/sublink.do">양육비 이행확보 지원 </a>
+                            <ul class="l_list_1" style="display: none;">
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T8C9/contents.do">양육비 이행확보 지원이란? </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T8C10/sublink.do">이용안내 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T8C14/sublink.do">자가진단 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T8C15/sublink.do">사업안내 </a>
+                                </li>
+                                <li class="on">
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T8C23/sublink.do">지원신청 </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="l_title2">
+                            <a href="https://www.childsupport.or.kr/lay1/S1T1C27/sublink.do">알림공간 </a>
+                            <ul class="l_list_2" style="display: none;">
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C28/front/board.do?sa=list&amp;bid=1">공지사항 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C29/front/board.do?sa=list&amp;bid=2">보도자료 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C129/front/board.do?sa=list&amp;bid=11">채용정보 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C130/front/board.do?sa=list&amp;bid=12">입찰정보 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C32/front/photo_board.do?sa=list&amp;bid=3&amp;val6=2">포토갤러리 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T27C35/sublink.do">홍보자료 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C123/meetings/openNameList.do">명단공개 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T27C124/meetings/publicNotice.do">공시송달 </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="l_title3">
+                            <a href="https://www.childsupport.or.kr/lay1/S1T1C39/sublink.do">정보공간 </a>
+                            <ul class="l_list_3" style="display: none;">
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T39C40/front/board.do?sa=list&amp;bid=5">자료실 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T39C41/contents.do">관계 법령 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T39C42/contents.do">관련 사이트 </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="l_title4">
+                            <a href="https://www.childsupport.or.kr/lay1/S1T1C43/sublink.do">소통·참여 </a>
+                            <ul class="l_list_4" style="display: none;">
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T43C44/part/part_02_01.do">온라인 상담 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T43C45/front/my_minwon.do">온라인 상담 답변 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T43C46/visit/visitWrite.do">방문상담 예약 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T43C47/visit/visitList.do">방문상담 예약 조회 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T43C126/visit/visitSignWrite.do">수어통역상담 예약 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T43C127/visit/signLangList.do">수어통역상담 예약 조회 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/bbs/S1T43C48/E/6/list.do">자주 묻는 질문 </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="l_title6">
+                            <a href="https://www.childsupport.or.kr/lay1/S1T1C56/sublink.do">CSA 소개 </a>
+                            <ul class="l_list_6" style="display: none;">
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T56C61/staff/org_chart/list.do">조직구성 </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.childsupport.or.kr/lay1/S1T56C62/contents.do">CI소개 </a>
+                                </li>
+                                <li class="last">
+                                    <a href="https://www.childsupport.or.kr/lay1/program/S1T56C63/location/location.do">오시는길 </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="dialog-confirm" title="로그인 연장" style="display:none;">
+                    <p>
+                        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+                        <span id="confirm-msg"></span>
+                    </p>
+                </div>
+                <script type="text/javascript">
+                    var timer = 1799; //로그인 유지 시간 1당 1초
+                    $(function() {
+                                var zoom = 100;
+                                var max = 200;
+                                var min = 80;
+                                $("#browser_plus").on("click", function(e) {
+                                    e.preventDefault();
+                                    if (zoom >= max) {
+                                        alert('최대 확대입니다.');
+                                        return;
+                                    } else {
+                                        $("body").css("zoom", (zoom += 20) + "%");
+                                    }
+                                });
+                                $("#browser_minus").on("click", function(e) {
+                                    e.preventDefault();
+                                    if (min >= zoom) {
+                                        alert('최소 확대입니다.');
+                                        return;
+                                    } else {
+                                        $("body").css("zoom", (zoom -= 20) + "%");
+                                    }
+                                });
+                                var windowWidth = $(window).width();
+                                if (windowWidth <= 1100) {
+                                    $("#header_logo img").css('width', '30%');
+                                } else {
+                                    $("#header_logo img").css('width', '');
+                                }
+                                if ("trionsoft01" != null && "trionsoft01" != "") {
+                                    //로그인 시간 감소 
+                                    setInterval(function() {
+                                        var minutes = parseInt(timer / 60 % 60, 10);
+                                        var seconds = parseInt(timer % 60, 10);
+                                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                                        seconds = seconds < 10 ? "0" + seconds : seconds;
+                                        $('#time_count').html("남은시간 " + minutes + ":" + seconds);
+                                        if (timer == 179) { //3분남을 시 연장 알림창.						
+                                            confirm_login_add();
+                                        }
+                                        if (timer == 0) {
+                                            location.href = "/logout.do";
+                                            alert("일정시간동안 사용하지 않아 로그아웃되었습니다.\n계속 이용을 원하시면 로그인 하시기 바랍니다.");
+                                        }
+                                        timer = timer - 1; //-1초
+                                    }, 1000); // 1초마다 반복			
+                                }
+
+                                function confirm_login_add() {
+                                    var msg = "로그인 시간을 연장하시겠습니까?";
+                                    jQuery("#confirm-msg").text(msg);
+                                    jQuery("#dialog-confirm").dialog({
+                                        resizable: false,
+                                        height: 250,
+                                        width: 400,
+                                        modal: true,
+                                        buttons: {
+                                            "확인": function() {
+                                                timer = 1800; //여기에 확인 눌렀을때 실행되는 event 정의 하면됨.
+                                                jQuery(this).dialog("close");
+                                            },
+                                            "취소": function() {
+                                                jQuery(this).dialog("close");
+                                            }
+                                        }
+                                    });
+                                    $('.ui-dialog .ui-dialog-titlebar-close').html(' < span class = "ui-button-icon ui-icon ui-icon-closethick" > < /span> < span class = "ui-button-icon-space" > < /span>');
+                                    }
+                                }); $(window).resize(function() {
+                                //창크기 변화 감지
+                                var windowWidth = $(window).width();
+                                if (windowWidth <= 1100) {
+                                    $("#header_logo img").css('width', '30%');
+                                } else {
+                                    $("#header_logo img").css('width', '');
+                                }
+                            });
+                </script>
+                <!-- 
+	<script type="text/javascript">
+		var 
+			scale = 1,
+			max = 1.4,
+			min = 0.8
+		;
+		
+		function zoomIn() {
+			if (scale >= max) {
+				alert('최대 확대입니다.');
+				return false;
+			}
+			scale *= 1.2;
+			zoom();
+		}
+		
+		function zoomOut() {
+			if(min >= scale){
+				alert('최소 확대입니다.');
+				return false;
+			}
+			scale /= 1.2;
+			zoom();
+		}
+		
+		function zoom() {
+			document.body.style.zoom = scale;
+			
+			document.body.style.webkitTransform = 'scale('+scale+')';  // Webkit
+			document.body.style.webkitTransformOrigin = '0 0';
+			document.body.style.MozTransform = 'scale('+scale+')';  // Mozilla(firefox)
+			document.body.style.MozTransformOrigin = '0 0';
+			document.body.style.OTransform = 'scale('+scale+')';  // Opera
+			document.body.style.OTransformOrigin = '0 0';		
+		}
+	</script>
+	 -->
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        //if($.inArray(location.pathname, ["/index.do"]) < 0){
+                        var title_length = $(".nav>ul>li").length;
+                        var title = "";
+                        var locationurl = location.pathname + location.search;
+                        for (var i = 1; i < title_length; i++) {
+                            if (i == 1) {
+                                title += $(".nav>ul>li:eq(" + i + ")").text().trim().replace(/\n|\t| /gim, '');
+                            } else {
+                                title += " > " + $(".nav>ul>li:eq(" + i + ")").text().trim().replace(/\n|\t| /gim, '');
+                            }
+                        }
+                        if (title == "") {
+                            $('#locationTitle').val("메인");
+                        } else {
+                            $('#locationTitle').val(title);
+                        }
+                        //var queryString = $("form[name=searchFrm]").serialize() ;
+                        $('#locationurl').val(locationurl);
+                        //$('#queryString').val(queryString);
+                        //var s_params = "title="+$('#title').val()+"&url="+$('#locationurl').val()+"&job="+$('#job').val()+"&keyword="+$('#keyword').val();
+                        //console.log("s_params : " + s_params);
+                        //$('#queryString').val();
+                        //console.log("title : " + title);
+                        //console.log("locationurl : " + location.pathname+location.search);
+                        //tracking_params = {"url":location.pathname+location.search,"title":title,"job":"목록"};
+                        //}
+                    })
+                </script>
+            </div>
+            <!-- header -->
+            <div class="contents_wrap">
+                <div class="contents">
+                    <div id="left_menu">
+                        <h2 class="sm">양육비 이행확보 지원</h2>
+                        <ul>
+                            <li>
+                                <a href="https://www.childsupport.or.kr/lay1/S1T8C9/contents.do">
+                                    <span>양육비 이행확보 지원이란?</span>
+                                </a>
+                            </li>
+                            <li class="has_sub">
+                                <a href="https://www.childsupport.or.kr/lay1/S1T8C10/sublink.do">
+                                    <span>이용안내</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T10C11/contents.do">
+                                            <span>지원대상</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T10C12/contents.do">
+                                            <span>지원 신청 방법</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T10C13/contents.do">
+                                            <span>제출서류</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="https://www.childsupport.or.kr/lay1/S1T8C14/sublink.do">
+                                    <span>자가진단</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/program/S1T14C98/selfdiagnosis/intro.do">
+                                            <span>양육비 이행확보 지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/program/S1T14C99/selfdiagnosis/emergency.do">
+                                            <span>한시적 양육비 긴급지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/program/S1T14C125/selfdiagnosis/supportCalc.do">
+                                            <span>양육비 계산기</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="https://www.childsupport.or.kr/lay1/S1T8C15/sublink.do">
+                                    <span>사업안내</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C16/contents.do">
+                                            <span>법률지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C17/contents.do">
+                                            <span>추심지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C121/contents.do">
+                                            <span>제재조치</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C19/contents.do">
+                                            <span>상담지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C20/contents.do">
+                                            <span>양육지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C120/contents.do">
+                                            <span>조사정보지원</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T15C21/contents.do">
+                                            <span>한시적 양육비 긴급지원</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="active has_sub">
+                                <a href="https://www.childsupport.or.kr/lay1/S1T8C23/sublink.do" class="on">
+                                    <span>지원신청</span>
+                                </a>
+                                <ul>
+                                    <li class="active">
+                                        <a href="https://www.childsupport.or.kr/lay1/program/S1T23C24/part/part_01_01.do" class="on">
+                                            <span>양육비 이행확보 지원신청</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/program/S1T23C25/support/agreeTempSupp.do">
+                                            <span>한시적양육비긴급지원 신청</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.childsupport.or.kr/lay1/program/S1T23C131/support/sanctionsSupp.do">
+                                            <span>제재조치 신청</span>
+                                        </a>
+                                    </li>
+                                    <li class="last">
+                                        <a href="https://www.childsupport.or.kr/lay1/S1T23C26/contents.do">
+                                            <span>서식다운로드</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sub_visual">
+                        <p>
+                            <br>
+                        </p>
+                    </div>
+                    <div id="sub">
+                        <div class="strapline">
+                            <h3>양육비 이행확보 지원신청</h3>
+                            <div class="sub_option">
+                                <div class="nav">
+                                    <ul>
+                                        <li>
+                                            <img src="https://www.childsupport.or.kr/images/sub/home.gif" alt="홈">
+                                        </li>
+                                        <li>양육비 이행확보 지원</li>
+                                        <li>지원신청</li>
+                                        <li class="lst">양육비 이행확보 지원신청</li>
+                                    </ul>
+                                </div>
+                                <div class="etc" id="sns_sharer">
+                                    <input type="hidden" name="pageTitle" id="pageTitle" value="양육비 이행확보 지원신청">
+                                    <input type="hidden" name="pageSubTitle" id="pageSubTitle" value=">양육비 이행확보 지원>지원신청>양육비 이행확보 지원신청">
+                                    <a href="#" id="print">
+                                        <img src="https://www.childsupport.or.kr/images/sub/print.gif" alt="인쇄" title="인쇄하기 새창열림">
+                                    </a>
+                                    <a href="#" class="share">
+                                        <img src="https://www.childsupport.or.kr/images/sub/share.gif" alt="공유">
+                                    </a>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <a href="#" id="facebook" title="페이스북 새창열림">
+                                                    <img src="https://www.childsupport.or.kr/images/sub/s_facebook.gif" alt="페이스북 공유">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" id="twitter" title="트위터 새창열림">
+                                                    <img src="https://www.childsupport.or.kr/images/sub/s_twitter.gif" alt="트위터 공유">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" id="kakaostory" title="카카오스토리 새창열림">
+                                                    <img src="https://www.childsupport.or.kr/images/sub/s_kakao.gif" alt="카카오스토리 공유">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" id="url_copy" title="url링크 복사 새창열림">
+                                                    <img src="https://www.childsupport.or.kr/images/sub/s_share.gif" alt="url링크 복사">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub_contents">
+                            <div class="step">
+                                <img src="https://www.childsupport.or.kr/images/sub/step02.gif" alt="양육비 이행확보 지원신청 단계: 개인정보 수집·이용동의>신청인 정보 입력>피신청인 정보 입력>지원업무/우선순위 선택>서류확인 및 신청완료 중 2.신청인 정보 입력 단계 진행">
+                            </div>
+                            <p class="sign2">※ 신청인(양육부·모) 및 지원 대상 자녀의 정보를 정확하게 입력해 주세요. <b class="color1">*표시는 필수 입력 항목입니다.</b>
+                            </p>
+                            <h4 class="dot_none mt01">신청인 정보</h4>
+                            <form id="frmIns" name="frmIns" method="post">
+                                <input type="hidden" name="caseAgreeYn" id="caseAgreeYn" value="Y">
+                                <input type="hidden" name="newsAgreeYn" id="newsAgreeYn" value="Y">
+                                <input type="hidden" name="docNo" id="docNo" value="">
+                                <input type="hidden" name="agreeDt" id="agreeDt" value="2025-03-15 22:45:42">
+                                <input type="hidden" name="rowCnt" id="rowCnt" value="1">
+                                <input type="hidden" name="servType" id="servType" value="1">
+                                <input type="hidden" name="currRowCnt" id="currRowCnt" value="1">
+                                <input type="hidden" name="title_tracking" id="title_tracking" value="양육비이행확보지원 > 지원신청 > 양육비이행확보지원신청">
+                                <input type="hidden" name="url_tracking" id="url_tracking" value="/lay1/program/S1T23C24/support/childSuppAP.do">
+                                <input type="hidden" name="job" id="job_tracking" value="">
+                                <input type="hidden" name="params" id="queryString_1" value="caseAgreeYn=Y&amp;newsAgreeYn=Y&amp;docNo=&amp;agreeDt=2025-03-15%2022%3A45%3A42&amp;rowCnt=&amp;servType=1&amp;currRowCnt=&amp;title_tracking=%EC%96%91%EC%9C%A1%EB%B9%84%EC%9D%B4%ED%96%89%ED%99%95%EB%B3%B4%EC%A7%80%EC%9B%90%20%3E%20%EC%A7%80%EC%9B%90%EC%8B%A0%EC%B2%AD%20%3E%20%EC%96%91%EC%9C%A1%EB%B9%84%EC%9D%B4%ED%96%89%ED%99%95%EB%B3%B4%EC%A7%80%EC%9B%90%EC%8B%A0%EC%B2%AD&amp;url_tracking=&amp;job=&amp;params=&amp;apNm=%ED%8A%B8%EB%9D%BC%EC%9D%B4%EC%96%B8&amp;apCertType=001&amp;jnumFrt=&amp;jnumEnd=&amp;apHhRelCd=0&amp;hpnoFrt=010&amp;hpnoMid=9999&amp;hpnoEnd=9999&amp;emailId=arisco&amp;emailComp=naver.com&amp;emailCompList=0&amp;telnoFrt=02&amp;telnoMid=&amp;telnoEnd=&amp;apAddrType=1&amp;apPostno=06052&amp;apAddr=%EB%85%BC%ED%98%84%EB%A1%9C%20706%20%EC%95%84%EC%9D%B4%EC%BA%90%EC%8A%AC%EB%B9%8C%EB%94%A9&amp;apAddrDe=5%EC%B8%B5%20%ED%8A%B8%EB%9D%BC%EC%9D%B4%EC%96%B8%20%EC%86%8C%ED%94%84%ED%8A%B8&amp;apOverSeaAdres=&amp;apBigfYn=N&amp;apMculturalYn=N&amp;acctBankCd=004&amp;acctAccount=&amp;acctNm=">
+                                <div class="responsive_table">
+                                    <table class="">
+                                        <caption>신청인정보 입력하는곳으로 성명, 주민등록번호, 세대주와의 관계, 휴대전화, 전자우편, 전화번호, 주소, 조손가족여부, 다문화가족여부를 입력할 수 있습니다.</caption>
+                                        <colgroup>
+                                            <col width="20%">
+                                            <col width="*">
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="apNm">성명 <b>*</b>
+                                                    </label>
+                                                </th>
+                                                <td>
+                                                    <div class="input_group">
+                                                        <div class="input size_lg">
+                                                            <input type="text" name="apNm" id="apNm" value="트라이언" readonly="readonly">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="jnumFrt">주민등록번호 <b>*</b>
+                                                        <br>(외국인 등록번호) </label>
+                                                </th>
+                                                <td>
+                                                    <input type="hidden" name="apCertType" id="apCertType" value="001">
+                                                    <div class="input_group">
+                                                        <div class="input size_lg">
+                                                            <input type="text" name="jnumFrt" id="jnumFrt" maxlength="6" class="inp2" value="" title="주민등록번호 앞자리 입력">
+                                                        </div>
+                                                        <span class="text">-</span>
+                                                        <div class="input size_lg">
+                                                            <input type="password" name="jnumEnd" id="jnumEnd" maxlength="7" class="inp2" value="" title="주민등록번호 뒷자리 입력">
+                                                        </div>
+                                                        <a href="javascript:void(0);" class="form_btn">
+                                                            인증하기
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="apHhRelCd">세대주와의 관계</label>
+                                                </th>
+                                                <td>
+                                                    <div class="input_group">
+                                                        <div class="input size_lg">
+                                                            <select id="apHhRelCd" name="apHhRelCd">
+                                                                <option value="0">선택하세요</option>
+                                                                <option value="001">본인</option>
+                                                                <option value="002">부</option>
+                                                                <option value="003">모</option>
+                                                                <option value="004">자</option>
+                                                                <option value="005">손</option>
+                                                                <option value="999">기타</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="hpnoFrt">휴대전화 <b>*</b>
+                                                    </label>
+                                                </th>
+                                                <td>
+                                                    <div class="input_group">
+                                                        <div class="input size_xs">
+                                                            <select name="hpnoFrt" id="hpnoFrt" title="휴대전화 앞자리 번호 선택">
+                                                                <option value="010" selected="selected">010</option>
+                                                                <option value="011">011</option>
+                                                                <option value="016">016</option>
+                                                                <option value="017">017</option>
+                                                                <option value="018">018</option>
+                                                                <option value="019">019</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="text">-</span>
+                                                        <div class="input size_xs">
+                                                            <input type="text" name="hpnoMid" id="hpnoMid" maxlength="4" value="9999" title="휴대전화 가운데 번호 입력">
+                                                        </div>
+                                                        <span class="text">-</span>
+                                                        <div class="input size_xs">
+                                                            <input type="text" name="hpnoEnd" id="hpnoEnd" maxlength="4" value="9999" title="휴대전화 뒷자리 번호 입력">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="emailId">전자우편 <b>*</b>
+                                                        <br>(이메일) </label>
+                                                </th>
+                                                <td>
+                                                    <div class="input_group">
+                                                        <div class="input size_lg">
+                                                            <input type="text" name="emailId" id="emailId" value="arisco" title="전자우편 아이디 입력">
+                                                        </div>
+                                                        <span class="text">@</span>
+                                                        <div class="input size_lg">
+                                                            <input type="text" name="emailComp" id="emailComp" value="naver.com" title="전자우편 도메인  입력">
+                                                        </div>
+                                                        <div class="input size_sm">
+                                                            <select id="emailCompList" name="emailCompList" title="전자우편 도메인 선택" onchange="javascript:fnSetEMailComp();">
+                                                                <option value="0">직접입력</option>
+                                                                <option value="1">naver.com</option>
+                                                                <option value="2">hanmail.net</option>
+                                                                <option value="3">nate.com</option>
+                                                                <option value="4">hotmail.com</option>
+                                                                <option value="5">paran.com</option>
+                                                                <option value="6">yahoo.com</option>
+                                                                <option value="7">chol.com</option>
+                                                                <option value="8">dreamwiz.com</option>
+                                                                <option value="9">empal.com</option>
+                                                                <option value="10">freechal.com</option>
+                                                                <option value="11">gmail.com</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="telnoFrt">전화번호 <b>*</b>
+                                                        <br>(긴급연락처) </label>
+                                                </th>
+                                                <td>
+                                                    <div class="input_group">
+                                                        <div class="input size_xs">
+                                                            <select id="telnoFrt" name="telnoFrt" title="전화번호 앞자리 번호 선택">
+                                                                <option value="02">02</option>
+                                                                <option value="031">031</option>
+                                                                <option value="032">032</option>
+                                                                <option value="033">033</option>
+                                                                <option value="041">041</option>
+                                                                <option value="042">042</option>
+                                                                <option value="043">043</option>
+                                                                <option value="044">044</option>
+                                                                <option value="0505">0505</option>
+                                                                <option value="051">051</option>
+                                                                <option value="052">052</option>
+                                                                <option value="053">053</option>
+                                                                <option value="054">054</option>
+                                                                <option value="055">055</option>
+                                                                <option value="061">061</option>
+                                                                <option value="062">062</option>
+                                                                <option value="063">063</option>
+                                                                <option value="064">064</option>
+                                                                <option value="070">070</option>
+                                                                <option value="705">705</option>
+                                                                <option value="010">010</option>
+                                                                <option value="011">011</option>
+                                                                <option value="016">016</option>
+                                                                <option value="017">017</option>
+                                                                <option value="018">018</option>
+                                                                <option value="019">019</option>
+                                                            </select>
+                                                        </div>
+                                                        <span class="text">-</span>
+                                                        <div class="input size_xs">
+                                                            <input type="text" name="telnoMid" id="telnoMid" maxlength="4" class="inp3" value="" title="전화번호 가운데 번호 입력">
+                                                        </div>
+                                                        <span class="text">-</span>
+                                                        <div class="input size_xs">
+                                                            <input type="text" name="telnoEnd" id="telnoEnd" maxlength="4" class="inp3" value="" title="전화번호 뒷자리 번호 입력">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="zip">주소 <b>*</b>
+                                                    </label>
+                                                </th>
+                                                <td>
+                                                    <div class="check_labels">
+                                                        <div class="item">
+                                                            <input type="radio" name="apAddrType" id="apAddrType_1" value="1" onclick="javascript:fnSetArea(1);" checked="checked">
+                                                            <label for="apAddrType_1">국내</label>
+                                                        </div>
+                                                        <div class="item">
+                                                            <input type="radio" name="apAddrType" id="apAddrType_2" value="2" onclick="javascript:fnSetArea(1);">
+                                                            <label for="apAddrType_2">해외</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="apLocalDiv">
+                                                        <div class="input_group">
+                                                            <div class="input size_sm">
+                                                                <input type="text" id="zip" name="apPostno" value="06052" title="우편번호 입력" readonly="readonly">
+                                                            </div>
+                                                            <a href="javascript:void(0);" class="form_btn" onclick="postOpen();" title="우편번호 찾기 새창열림">
+                                                                우편번호찾기
+                                                            </a>
+                                                        </div>
+                                                        <div class="input_group">
+                                                            <div class="input size_xl">
+                                                                <input type="text" id="adres" name="apAddr" value="논현로 706 아이캐슬빌딩" title="주소 입력" readonly="readonly">
+                                                            </div>
+                                                        </div>
+                                                        <div class="input_group">
+                                                            <div class="input size_xl">
+                                                                <input type="text" id="detailAdres" name="apAddrDe" value="5층 트라이언 소프트" title="상세주소 입력">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="apOverSeaDiv" style="display:none">
+                                                        <div class="input_group">
+                                                            <div class="input size_xl">
+                                                                <input type="text" id="apOverSeaAdres" name="apOverSeaAdres" value="" class="inp5" title="해외주소 입력">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">조손가족여부 <b>*</b>
+                                                </th>
+                                                <td>
+                                                    <div class="check_labels">
+                                                        <div class="item">
+                                                            <input type="radio" name="apBigfYn" id="apBigfYn_Y" value="Y">
+                                                        <label for="apBigfYn_Y">예</label>
+                                                        </div>
+                                                        <div class="item">
+                                                            <input type="radio" name="apBigfYn" id="apBigfYn_N" value="N" checked="checked">
+                                                            <label for="apBigfYn_N">아니오</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">다문화가족여부 <b>*</b>
+                                                </th>
+                                                <td>
+                                                    <div class="check_labels">
+                                                        <div class="item">
+                                                            <input type="radio" name="apMculturalYn" id="apMculturalYn_Y" value="Y">
+                                                            <label for="apMculturalYn_Y">예</label>
+                                                        </div>
+                                                        <div class="item">
+                                                            <input type="radio" name="apMculturalYn" id="apMculturalYn_N" value="N" checked="checked">
+                                                        <label for="apMculturalYn_N">아니오</label>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">
+                                                    <label for="acctBankNm">신청인 통장 <b>*</b>
+                                                    </label>
+                                                </th>
+                                                <td>
+                                                    <div class="input_group">
+                                                        <div class="input_item">
+                                                            <span class="input_tit"><b>거래은행</b></span>
+                                                            <div class="input">
+                                                                <select id="acctBankCd" name="acctBankCd" title="주거래은행 선택">
+                                                                    <option value="032">BNK부산은행</option>
+                                                                    <option value="004" selected="selected">KB국민은행</option>
+                                                                    <option value="011">NH농협은행</option>
+                                                                    <option value="023">SC제일은행</option>
+                                                                    <option value="039">경남은행</option>
+                                                                    <option value="034">광주은행</option>
+                                                                    <option value="003">기업은행</option>
+                                                                    <option value="031">아이엠뱅크(대구은행)</option>
+                                                                    <option value="002">산업은행</option>
+                                                                    <option value="045">새마을금고</option>
+                                                                    <option value="007">수협은행</option>
+                                                                    <option value="088">신한은행</option>
+                                                                    <option value="047">신협</option>
+                                                                    <option value="020">우리은행</option>
+                                                                    <option value="071">우체국</option>
+                                                                    <option value="050">저축은행</option>
+                                                                    <option value="037">전북은행</option>
+                                                                    <option value="035">제주은행</option>
+                                                                    <option value="090">카카오뱅크</option>
+                                                                    <option value="089">케이뱅크</option>
+                                                                    <option value="092">토스혁신준비법인</option>
+                                                                    <option value="081">하나은행</option>
+                                                                    <option value="027">한국씨티은행</option>
+                                                                    <option value="001">한국은행</option>
+                                                                    <option value="243">한국투자증권</option>
+                                                                    <option value="093">카카오페이증권</option>
+                                                                    <option value="094">산림조합(산림조합중앙회) </option>
+                                                                    <option value="095">미래에셋증권</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input_item">
+                                                            <span class="input_tit"><b>계좌번호</b></span>
+                                                            <div class="input">
+                                                                <input type="text" id="acctAccount" name="acctAccount" title="계좌번호를 입력해주세요" value="" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="input_item">
+                                                            <span class="input_tit"><b>예금주</b></span>
+                                                            <div class="input">
+                                                                <input type="text" id="acctNm" name="acctNm" title="예금주를 입력해주세요" value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="align mt01">
+                                    <div class="left">
+                                        <h4 class="dot_none">가족사항</h4>
+                                    </div>
+                                    <div class="right">
+                                        <p>
+                                            <a href="javascript:void(0);" class="form_btn2" onclick="javascript:fnRowIns('','','','','','','');">
+                                                첨부
+                                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 4H8" stroke="white" stroke-width="2"/>
+                                                <path d="M4 8L4 0" stroke="white" stroke-width="2"/>
+                                                </svg>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="family_table">
+                                    <div class="responsive_table mb03">
+                                        <table>
+                                            <caption>가족사항 입력하는곳으로 성명, 신청인과의 관계, 생년월일, 동겨여부, 학력/재학 여부 특이사항을 입력할 수 있습니다.</caption>
+                                            <colgroup>
+                                                <col width="20%">
+                                                <col width="30%">
+                                                <col width="20%">
+                                                <col width="30%">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">성명</th>
+                                                    <td>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="text" name="fNm" id="fNm1" value="" onkeyup="chkStr($(this));" title="1번째 (자/손/기타)에 해당하는 성명">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <th scope="row">
+                                                        <label for="relateApCd1">신청인과의 관계 <b>*</b>
+                                                        </label>
+                                                    </th>
+                                                    <td>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <select id="relateApCd1" name="relateApCd" title="1번째 (자/손/기타)에 해당하는 신청인과의 관계를 선택해주세요.">
+                                                                    <!-- 셀렉트해야함 -->
+                                                                    <option value="0">선택하세요</option>
+                                                                    <option value="004">자</option>
+                                                                    <option value="005">손</option>
+                                                                    <option value="999">기타</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <label for="fBirth1">생년월일 <b>*</b>
+                                                        </label>
+                                                    </th>
+                                                    <td>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="text" name="fBirth" id="fBirth1" value="" maxlength="6" onkeyup="javascript:chkNumber($(this));" title="1번째 (자/손/기타)에 해당하는 생년월일">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <th scope="row">동거여부</th>
+                                                    <td>
+                                                        <div class="check_labels">
+                                                            <div class="item">
+                                                                <input type="radio" name="liveTogeCd1" id="liveTogeCd1_Y" onclick="javascript:fnSetTxt('1');" value="Y" checked="checked">
+                                                            <label for="liveTogeCd1_Y">예</label>
+                                                            </div>
+                                                            <div class="item">
+                                                                <input type="radio" name="liveTogeCd1" id="liveTogeCd1_N" onclick="javascript:fnSetTxt('1');" value="N">
+                                                            <label for="liveTogeCd1_N">아니오</label>
+                                                            </div>
+                                                        </div>
+                                                        <div id="notTogeTxtDiv1" class="input_group" style="display:none;">
+                                                            <div class="input">
+                                                                <input type="text" name="notTogeTxt1" id="notTogeTxt1" title="미동거 사유입력" onfocus="javascript:fnReSetTxt('1')" value="">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <label for="lstSchCd1">학력·재학 여부</label>
+                                                    </th>
+                                                    <td>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <select id="lstSchCd1" name="lstSchCd" title="1번째 (자/손/기타)에 해당하는 학력,재학 여부를 선택해주세요.">
+                                                                    <!-- 셀렉트해야함 -->
+                                                                    <option value="0">선택하세요</option>
+                                                                    <option value="010">미취학</option>
+                                                                    <option value="020">초등학교재학</option>
+                                                                    <option value="021">초등학교졸업</option>
+                                                                    <option value="030">중학교재학</option>
+                                                                    <option value="031">중학교졸업</option>
+                                                                    <option value="040">고등학교재학</option>
+                                                                    <option value="041">고등학교졸업</option>
+                                                                    <option value="050">대학교재학</option>
+                                                                    <option value="999">기타</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                    </td>
+                                                    <th scope="row">
+                                                        <label for="fRemark1">특이사항</label>
+                                                    </th>
+                                                    <td>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="text" name="fRemark1" id="fRemark1" value=" " title="1번째 비고사항">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <p class="sign1">* 지원 대상 자녀의 정보만 입력해 주시면 됩니다.</p>
+                                <p class="sign1">* 생년월일은 주민등록번호 앞 6자리를 입력해 주세요. (예 : 2015년 1월 1일생 → 150101 입력</p>
+
+
+                                <!-- 250315 추가 -->
+                                <div class="align mt01">
+                                    <div class="left">
+                                        <h4 class="dot_none">집행권원 입력</h4>
+                                    </div>
+                                </div>
+                                <div id="family_table">
+                                    <div class="responsive_table mb03">
+                                        <table>
+                                            <caption>집행권원 입력하는곳으로 집행권원을 입력할 수 있습니다.</caption>
+                                            <colgroup>
+                                                <col width="20%">
+                                                <col width="*">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">집행권원</th>
+                                                    <td>
+                                                        <div class="input_group">
+                                                            <div class="input">
+                                                                <input type="text" name="" id="" value="">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="align mt01">
+                                    <div class="left">
+                                        <h4 class="dot_none">필수서류첨부</h4>
+                                    </div>
+                                </div>
+                                <div id="family_table">
+                                    <div class="responsive_table mb03">
+                                        <table>
+                                            <caption>집행권원 입력하는곳으로 집행권원을 입력할 수 있습니다.</caption>
+                                            <colgroup>
+                                                <col width="*">
+                                                <col width="28.35%">
+                                                <col width="120px">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>필수서류목록</th>
+                                                    <th>파일명</th>
+                                                    <th>관리</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="left sm">
+                                                        <span class="mb_tit">필수서류목록</span>
+                                                        혼인관계증명서 원본(상세/주민번호표기)<br/>
+                                                        (혼인관계증명서에 이혼신고일이 표시되지 않았을 경우 제적등본 추가 제출)-신청인 기준 2통
+                                                    </td>
+                                                    <td class="center">
+                                                        <span class="mb_tit">파일명</span>
+                                                        <div class="table_file">
+                                                            <span><a href="javascript:">필수첨부파일1.pdf</a></span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">
+                                                        <span class="mb_tit">관리</span>
+                                                        <a href="javascript:void(0);" class="form_btn2">
+                                                            첨부
+                                                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M0 4H8" stroke="white" stroke-width="2"/>
+                                                            <path d="M4 8L4 0" stroke="white" stroke-width="2"/>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="mb_tit">필수서류목록</span>
+                                                        혼인관계증명서 원본(상세/주민번호표기)<br/>
+                                                        (혼인관계증명서에 이혼신고일이 표시되지 않았을 경우 제적등본 추가 제출)-신청인 기준 2통
+                                                    </td>
+                                                    <td class="center">
+                                                        <span class="mb_tit">파일명</span>
+                                                        <div class="table_file">
+                                                            <span><a href="javascript:">필수첨부파일1필수첨부파일1필수첨부파일1필수첨부파일1필수첨부파일1필수첨부파일1필수첨부파일1.pdf</a></span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="center">
+                                                        <span class="mb_tit">관리</span>
+                                                        <a href="javascript:void(0);" class="form_btn2">
+                                                            첨부
+                                                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M0 4H8" stroke="white" stroke-width="2"/>
+                                                            <path d="M4 8L4 0" stroke="white" stroke-width="2"/>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- 250315 추가 -->
+                                 
+                                <div class="btn_type2">
+                                    <div class="center">
+                                        <a href="javascirpt:void(0);" id="btn_doBack">
+                                            <img src="https://www.childsupport.or.kr/images/sub/d_prev_btn.gif" alt="이전">
+                                        </a>
+                                        <a href="javascirpt:void(0);" id="btn_doSave">
+                                            <img src="https://www.childsupport.or.kr/images/sub/d_next_btn.gif" alt="다음">
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                            <script type="text/javascript">
+                                //
+                                < ![CDATA[$(function() {
+                                            $("#satisfactionFrm").submit(function() {
+                                                if (!$("[name='score']").is(":checked")) {
+                                                    alert("만족도를 선택하여 주시기 바랍니다.");
+                                                    $("[name='score']").eq(0).focus();
+                                                    return false;
+                                                }
+                                                $.post($(this).prop("action"), $(this).serializeObject(), function(data) {
+                                                    if (data.rst == "-1") {
+                                                        alert(data.msg);
+                                                    } else {
+                                                        alert("정상적으로 등록되었습니다. 참여해주셔서 감사합니다.");
+                                                        $(".s_avg").text(data.data.average);
+                                                        $(".s_cnt").text(data.data.cnt);
+                                                        $("textarea[name='etc']").val('');
+                                                    }
+                                                });
+                                                return false;
+                                            });
+                                            /* 
+                                            $("#QR_code").toggle(function(){
+                                            	$(".QR_box").slideDown();
+                                            	$("#qr_img").attr("src", "/qrcode.do?width=100&height=97&url="+location.href);
+                                            }, function(){
+                                            	$(".QR_box").slideUp();
+                                            });
+                                             */
+                                        });
+
+                                        function estimate() {
+                                            $("#satisfactionFrm").submit();
+                                        }
+                                        //]]>
+                            </script>
+                            <div id="evaluation">
+  
+  <div class="eval_chk">
+	  <div class="txt_serach">
+	    <p>이 페이지에서 제공하는 정보에 대하여 어느 정도 만족하셨습니까?</p>
+	    <span>[평균 <strong class="num s_avg">3.2</strong>점 /<strong class="num s_cnt">260</strong>명 참여]</span>
+	  </div>
+	  <div class="gtb">
+	  <form id="satisfactionFrm" name="satisfactionFrm" action="/satifaction/estimate.do" method="post">
+	  	<double-submit:preventer>
+	  	<input type="hidden" name="cms_menu_seq" value="24">
+	    <ul>
+	      <li>
+	      <input type="radio" id="well" name="score" value="5" checked="checked">
+	      <label for="well">
+	      매우만족<img src="https://www.childsupport.or.kr/images/sub/icon_score_1.png" alt="매우만족"></label>
+	      </li>
+	      <li>
+	      <input type="radio" id="satisfactorily" name="score" value="4">
+	      <label for="satisfactorily">
+	      만족<img src="https://www.childsupport.or.kr/images/sub/icon_score_2.png" alt="만족"></label>
+	      </li>
+	      <li>
+	      <input type="radio" id="normal" name="score" value="3">
+	      <label for="normal">
+	      보통<img src="https://www.childsupport.or.kr/images/sub/icon_score_3.png" alt="보통"></label>
+	      </li>
+	      <li>
+	      <input type="radio" id="dissatisfaction" name="score" value="2">
+	      <label for="dissatisfaction">
+	      불만족<img src="https://www.childsupport.or.kr/images/sub/icon_score_4.png" alt="불만족"></label>
+	      </li>
+	      <li>
+	      <input type="radio" id="veryunsatisfactory" name="score" value="1">
+	      <label for="veryunsatisfactory">
+	      매우불만족<img src="https://www.childsupport.or.kr/images/sub/icon_score_5.png" alt="매우불만족"></label>
+	      </li>
+	    </ul>
+	    <a href="javascript:estimate()"><span>평가</span></a>
+	    
+	  </double-submit:preventer></form></div>
+  </div>
+</div>
+
+				</div>
+				
+
+
+<div class="quick_r">
+	<ul>
+		<li>
+			<a href="http://www.mogef.go.kr/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick01_off.gif" alt=""></p>
+				<span>여성가족부</span>
+			</a>
+		</li>
+		<li>
+			<a href="http://www.law.go.kr/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick04_off.gif" alt=""></p>
+				<span>국가법령<br>정보센터</span>
+			</a>
+		</li>
+		<li>
+			<a href="http://women.na.go.kr:444/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick03_off.gif" alt=""></p>
+				<span>여성가족위원회</span>
+			</a>
+		</li>			
+		<li>
+			<a href="http://www.klac.or.kr/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick05_off.gif" alt=""></p>
+				<span>대한법률<br>구조공단</span>
+			</a>
+		</li>
+		
+		<li>
+			<a href="http://www.lawhome.or.kr/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick06_off.gif" alt=""></p>
+				<span>한국가정<br>법률상담소</span>
+			</a>
+		</li>
+		<li>
+			<a href="http://www.legalaid.or.kr/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick07_off.gif" alt=""></p>
+				<span>대한변협법<br>률구조재단</span>
+			</a>
+		</li>
+		<li>
+			<a href="http://law.go.kr" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick08_off.gif" alt=""></p>
+				<span>법령자료</span>
+			</a>
+		</li>
+<!--		<li>-->
+<!--			<a href="http://www.lotteworld.com/index.asp" class="btn_style" target="_blank" title="새창열림">-->
+<!--				<p><img src="https://www.childsupport.or.kr/images/main/r_quick09_off.gif" alt="" /></p>-->
+<!--				<span>LOTTE WORLD<br />ADVENTURE</span>-->
+<!--			</a> -->
+<!--		</li>-->
+		<li>
+			<a href="http://www.moel.go.kr/local/seoul/index.do" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick01_off.gif" alt=""></p>
+				<span>서울지방<br>고용노동청</span>
+			</a>
+		</li>
+		<li>
+			<a href="http://www.korea1391.go.kr/new/" class="btn_style" target="_blank" title="새창열림">
+				<p><img src="https://www.childsupport.or.kr/images/main/r_quick10_off.gif" alt=""></p>
+				<span>아동보호<br>전문기관</span>
+			</a>
+		</li>
+<!--		<li>-->
+<!--			<a href="http://www.ktv.go.kr/" class="btn_style" target="_blank" title="새창열림">-->
+<!--				<p><img src="https://www.childsupport.or.kr/images/main/r_quick01_off.gif" alt="" /></p>-->
+<!--				<span>KTV 국민방송</span>-->
+<!--			</a>-->
+<!--		</li>-->
+      <li>
+  			<a href="http://www.kihf.or.kr/" class="btn_style" target="_blank" title="새창열림">
+  				<p><img src="https://www.childsupport.or.kr/images/main/r_quick02_off.gif" alt=""></p>
+  				<span>한국건강가정<br>진흥원</span>
+  			</a>
+  		</li>
+	</ul>
+</div>
+        	</div>
+    	</div>
+	</div>
+	
+
+
+<div id="footer">
+	<div class="f_utill_wrap">
+		<div class="f_utill">
+			<div class="m_f_sns">
+				<div class="select_box"> 
+			      	<select name="link" onchange="window.open(this.value)" title="관련 사이트 선택">
+				        <option value="/index.do">관련 사이트</option>
+				        <option value="http://www.mogef.go.kr/">여성가족부</option>
+				        <option value="http://www.kihf.or.kr/">한국건강가정진흥원</option>
+				        <option value="http://women.na.go.kr/">여성가족위원회</option>
+				        <option value="http://www.law.go.kr/">국가법령정보센터</option>
+				        <option value="http://www.klac.or.kr/">대한법률구조공단</option>
+				        <option value="http://www.lawhome.or.kr/">한국가정법률상담소</option>
+				        <option value="http://www.legalaid.or.kr/">대한변협법률구조재단</option>
+				        <option value="http://oneclick.law.go.kr/CSP/Main.laf">법정자료</option>
+			      	</select>
+			    </div>
+			    <a href="http://blog.naver.com/pinacho1" target="_blank" title="새창열림">블로그</a>
+			    <a href="https://www.facebook.com/childsupport2015" target="_blank" title="새창열림">페이스북</a>
+			</div>
+			<div class="f_menu">
+				<ul>
+					<li class="fst"><a href="https://www.childsupport.or.kr/lay1/S1T6C95/contents.do"><strong>개인정보처리방침</strong></a></li>
+					<li><a href="https://www.childsupport.or.kr/lay1/S1T6C96/contents.do">이메일수집거부</a></li>
+					<li><a href="https://www.childsupport.or.kr/lay1/S1T6C119/contents.do">공공저작물 저작권 관리 및 이용 지침</a></li>
+					<li class="lst"><a href="https://www.childsupport.or.kr/lay1/program/S1T56C63/location/location.do">오시는길</a></li>
+					<!-- <li class="lst"><a href="#">관련기관 바로가기</a></li> -->
+				</ul>
+				<div></div>
+			</div>
+			<!-- <div class="f_sns">
+				<a href="http://blog.naver.com/pinacho1" target="_blank" title="새창열림"><img src="https://www.childsupport.or.kr/images/footer/blog.gif" alt="블로그" /></a>
+				<a href="https://www.facebook.com/childsupport2015" target="_blank" title="새창열림"><img src="https://www.childsupport.or.kr/images/footer/facebook.gif" alt="페이스북" /></a>
+			</div> -->
+		</div> <!-- f_menu -->
+	</div>
+
+	<div class="f_wrap">
+		<div class="f_logo"><img src="https://www.childsupport.or.kr/images/footer/f_logo.png" alt="양육비이행관리원 Child Support Agency"></div>
+		<div class="f_infor">
+			<p>대면상담/접수처 : (04554)서울특별시 중구 퇴계로 173(충무로3가, 남산스퀘어) 24층</p>
+			<p>대표번호 : 1644-6621 / 팩스번호 : 02-3479-5507</p>
+			<p class="copy">Copyright ⓒ Child Support Agency. All Rights Reserved</p>
+		</div>
+		<div class="f_mark">
+			<a href="http://www.webwatch.or.kr/Situation/WA_Situation.html?MenuCD=110" target="_blank" title="새창열림"><img src="https://www.childsupport.or.kr/images/common/WA품질인증마크.png" alt="과학기술정보통신부 WEB ACCESSIBILITY 마크(웹 접근성 품질인증 마크)" title="국가 공인 인증기관 : 웹와치"></a>
+		</div>
+	</div> <!-- f_wrap -->
+</div> <!-- footer -->
+
+<script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/pgwbrowser.js"></script>
+<script type="text/javascript" src="https://www.childsupport.or.kr/lib/js/mc.analytics.js"></script>
+	
+
+
+<div id="naviMenu" style="right: -1000px; display: none;">
+  <div>
+    <div class="closeArea">
+    	<div>
+	    	<a href="https://www.childsupport.or.kr/index.do" class="fst">처음으로</a>
+	    	
+				
+					<a href="https://www.childsupport.or.kr/lay1/S1T1C89/sublink.do">마이페이지</a>
+					<a href="https://www.childsupport.or.kr/logout.do">로그아웃</a>
+				
+				
+			
+	    	<a href="https://www.childsupport.or.kr/eng">ENGLISH</a>
+    	</div>
+    	<a class="close"><img src="https://www.childsupport.or.kr/images/common/close_btn.gif" alt="닫기"></a>
+    </div>
+    <ul class="menuCtg">
+      
+      <!-- product -->
+      <li class="on">
+        <ul>
+      	<li class="menu_1 on"> <a href="https://www.childsupport.or.kr/lay1/S1T1C8/sublink.do" class="mnTit">양육비 이행확보 지원 </a> 
+ <ul class="sub"> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T8C9/contents.do">양육비 이행확보 지원이란? </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T8C10/sublink.do">이용안내 </a> 
+   <ul> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T10C11/contents.do">지원대상 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T10C12/contents.do">지원 신청 방법 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T10C13/contents.do">제출서류 </a> </li>
+   </ul></li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T8C14/sublink.do">자가진단 </a> 
+   <ul> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T14C98/selfdiagnosis/intro.do">양육비 이행확보 지원 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T14C99/selfdiagnosis/emergency.do">한시적 양육비 긴급지원 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T14C125/selfdiagnosis/supportCalc.do">양육비 계산기 </a> </li>
+   </ul></li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T8C15/sublink.do">사업안내 </a> 
+   <ul> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C16/contents.do">법률지원 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C17/contents.do">추심지원 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C121/contents.do">제재조치 </a> </li>  
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C19/contents.do">상담지원 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C20/contents.do">양육지원 </a> </li>  
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C120/contents.do">조사정보지원 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T15C21/contents.do">한시적 양육비 긴급지원 </a> </li>    
+   </ul></li> 
+  <li class="on"> <a href="https://www.childsupport.or.kr/lay1/S1T8C23/sublink.do">지원신청 </a> 
+   <ul> 
+    <li class="on"> <a href="https://www.childsupport.or.kr/lay1/program/S1T23C24/part/part_01_01.do">양육비 이행확보 지원신청 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T23C25/support/agreeTempSupp.do">한시적양육비긴급지원 신청 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T23C131/support/sanctionsSupp.do">제재조치 신청 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/S1T23C26/contents.do">서식다운로드 </a> </li>
+   </ul></li>
+ </ul></li> 
+<li class="menu_2"> <a href="https://www.childsupport.or.kr/lay1/S1T1C27/sublink.do" class="mnTit">알림공간 </a> 
+ <ul class="sub"> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C28/front/board.do?sa=list&amp;bid=1">공지사항 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C29/front/board.do?sa=list&amp;bid=2">보도자료 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C129/front/board.do?sa=list&amp;bid=11">채용정보 </a> </li>  
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C130/front/board.do?sa=list&amp;bid=12">입찰정보 </a> </li>  
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C32/front/photo_board.do?sa=list&amp;bid=3&amp;val6=2">포토갤러리 </a> 
+   <ul>  
+   </ul></li>  
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T27C35/sublink.do">홍보자료 </a> 
+   <ul> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T35C37/front/photo_board.do?sa=list&amp;bid=10&amp;val6=1">홍보영상 </a> </li>  
+    <li> <a href="https://www.childsupport.or.kr/lay1/bbs/S1T35C36/H/7/list.do">뉴스레터 </a> </li> 
+    <li> <a href="https://www.childsupport.or.kr/lay1/bbs/S1T35C85/H/9/list.do">브로슈어 </a> </li>
+   </ul></li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C123/meetings/openNameList.do">명단공개 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T27C124/meetings/publicNotice.do">공시송달 </a> </li>
+ </ul></li> 
+<li class="menu_3"> <a href="https://www.childsupport.or.kr/lay1/S1T1C39/sublink.do" class="mnTit">정보공간 </a> 
+ <ul class="sub"> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T39C40/front/board.do?sa=list&amp;bid=5">자료실 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T39C41/contents.do">관계 법령 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T39C42/contents.do">관련 사이트 </a> </li>
+ </ul></li> 
+<li class="menu_4"> <a href="https://www.childsupport.or.kr/lay1/S1T1C43/sublink.do" class="mnTit">소통·참여 </a> 
+ <ul class="sub"> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T43C44/part/part_02_01.do">온라인 상담 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T43C45/front/my_minwon.do">온라인 상담 답변 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T43C46/visit/visitWrite.do">방문상담 예약 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T43C47/visit/visitList.do">방문상담 예약 조회 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T43C126/visit/visitSignWrite.do">수어통역상담 예약 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T43C127/visit/signLangList.do">수어통역상담 예약 조회 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/bbs/S1T43C48/E/6/list.do">자주 묻는 질문 </a> </li>
+ </ul></li>  
+<li class="menu_6"> <a href="https://www.childsupport.or.kr/lay1/S1T1C56/sublink.do" class="mnTit">CSA 소개 </a> 
+ <ul class="sub">     
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T56C61/staff/org_chart/list.do">조직구성 </a> 
+   <ul>  
+   </ul></li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/S1T56C62/contents.do">CI소개 </a> </li> 
+  <li> <a href="https://www.childsupport.or.kr/lay1/program/S1T56C63/location/location.do">오시는길 </a> </li>
+ </ul></li> 
+      	</ul>
+      </li>
+    </ul>
+    <!-- 
+    <div class="ml_tel"><a href="tel:02-3479-7600"><img src="" alt=""></a></div>
+    <div class="m_main_link">
+      <ul>
+        <li><a href="#"><img src="" alt=""></a></li>
+        <li><a href="#"><img src="" alt=""></a></li>
+        <li><a href="#"><img src="" alt=""></a></li>
+        <li><a href="#"><img src="" alt=""></a></li>
+      </ul>
+    </div>
+     -->
+    <div class="select_box_1"> <span class="select">
+      <select name="link" onchange="window.open(this.value)" title="관련 사이트 선택">
+        <option value="/index.do">관련 사이트</option>
+        <option value="http://www.mogef.go.kr/">여성가족부</option>
+        <option value="http://www.kihf.or.kr/">한국건강가정진흥원</option>
+        <option value="http://women.na.go.kr/">여성가족위원회</option>
+        <option value="http://www.law.go.kr/">국가법령정보센터</option>
+        <option value="http://www.klac.or.kr/">대한법률구조공단</option>
+        <option value="http://www.lawhome.or.kr/">한국가정법률상담소</option>
+        <option value="http://www.legalaid.or.kr/">대한변협법률구조재단</option>
+        <option value="http://oneclick.law.go.kr/CSP/Main.laf">법정자료</option>
+      </select>
+      </span> <span class="btn_go"><a href="#"><img src="https://www.childsupport.or.kr/images/common/select_go_btn.png" alt="이동"></a></span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+</body></html>
