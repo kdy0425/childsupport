@@ -581,14 +581,16 @@
                                     <caption>양육비지급현황 이행금액 입금 내역 등록 폼을 제공합니다.</caption>
                                     <colgroup>
                                         <col style="width: 98px;">
-                                        <col style="width: calc((100% - 98px) / 3);">
-                                        <col style="width: calc((100% - 98px) / 3);">
-                                        <col style="width: calc((100% - 98px) / 3);">
+                                        <col style="width: calc((100% - 98px) / 4);">
+                                        <col style="width: calc((100% - 98px) / 4);">
+                                        <col style="width: calc((100% - 98px) / 4);">
+                                        <col style="width: calc((100% - 98px) / 4);">
                                     </colgroup>
                                     <thead>
                                         <tr>
                                             <th scope="col">번호</th>
                                             <th scope="col">입금월</th>
+                                            <th scope="col">입금일자</th>
                                             <th scope="col">입금자</th>
                                             <th scope="col">이행금액</th>
                                         </tr>
@@ -599,7 +601,14 @@
                                             <td><span class="mb_tit">입금월</span>
                                                     <div class="input_group">
                                                     <div class="input">
-                                                        <input type="text" name="todayDt1" id="todayDt1" class="date_month date_icon inp2" title="입금월 선택" autocomplete="off" value="2025-01"/>
+                                                        <input type="text" name="" id="" class="date_month date_icon inp2" title="입금월 선택" autocomplete="off" value="2025-01"/>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="mb_tit">입금일자</span>
+                                                <div class="input_group">
+                                                    <div class="input">
+                                                        <input type="text" name="" id="" class="datepicker date_icon inp2" title="입금일자 선택" value="2025-01-01"/>
                                                     </div>
                                                 </div>
                                             </td>
@@ -623,7 +632,14 @@
                                             <td><span class="mb_tit">입금월</span>
                                                     <div class="input_group">
                                                     <div class="input">
-                                                        <input type="text" name="todayDt1" id="todayDt1" class="date_month date_icon inp2" title="입금월 선택" autocomplete="off" value="2025-01"/>
+                                                        <input type="text" name="" id="" class="date_month date_icon inp2" title="입금월 선택" autocomplete="off" value="2025-01"/>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="mb_tit">입금일자</span>
+                                                <div class="input_group">
+                                                    <div class="input">
+                                                        <input type="text" name="" id="" class="datepicker date_icon inp2" title="입금일자 선택" value="2025-01-01"/>
                                                     </div>
                                                 </div>
                                             </td>
@@ -646,7 +662,21 @@
                                 </table>
                             </div>
 
-                            
+                            <style>
+                                .ui-datepicker{box-sizing: border-box;}
+                                .ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{top:9px;}
+                                .ui-datepicker span.ui-datepicker-year,
+                                .ui-datepicker span.ui-datepicker-month{line-height:38px;font-size:14px;}
+                                .ui-datepicker span.ui-datepicker-year:after{content:"년"}
+                                .ui-datepicker table{margin:4px 4px 8px;width:calc(100% - 8px);}
+                                .ui-datepicker th{height: 29px;padding:0 0 1px 0;text-align: center;font-size:13px;font-weight: bold;color: #353535;}
+                                .ui-datepicker td{padding:2px 0;}
+                                .ui-datepicker td .ui-state-default{box-sizing: border-box;display: block;height:24px;line-height:24px;padding:0;border:0;background:none;color:#353535;font-size:14px;font-weight:bold;text-align: center;text-indent:-1px;}
+                                .ui-datepicker td .ui-state-active{background-color: #3180BD;color:#fff;border-radius:4px;}
+                                .ui-datepicker .ui-datepicker-buttonpane{margin:0;}
+                                .ui-datepicker .ui-datepicker-buttonpane:after{content:"";display: table;clear: both;}
+                                .ui-datepicker td .ui-priority-secondary{color:#ddd;opacity: 1;}
+                            </style>
                             <script>
                                 $('.date_month').each(function(){
                                     $(this).datepicker({
@@ -669,16 +699,43 @@
                                         beforeShow: function(input, inst) {
                                             inst.dpDiv.addClass('month-picker');
                                             setTimeout(function(){
+                                                var inputWidth = $(input).outerWidth();
+                                                inst.dpDiv.css('width', inputWidth + 'px');
+                                                inst.dpDiv.css('max-width', inputWidth + 'px');
                                                 inst.dpDiv.find('.ui-datepicker-calendar').hide();
                                             }, 0);
                                         },
                                         onChangeMonthYear: function(year, month, inst) {
+                                            var input = inst.input;
                                             setTimeout(function(){
-                                                inst.dpDiv.find('.ui-datepicker-calendar').hide();
-                                                $(this).blur();
-
+                                                $.datepicker._hideDatepicker();
+                                                $(input).blur();
                                             }, 0);
                                         }
+                                    });
+                                });
+                                $('.datepicker').each(function(){
+                                    $(this).datepicker({
+                                        showMonthAfterYear: true,
+                                        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], 
+                                        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'], 
+                                        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+                                        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+                                        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                                        dateFormat: 'yy-mm-dd',
+                                        showButtonPanel: true,
+                                        showOtherMonths: true,
+                                        selectOtherMonths: true,
+                                        beforeShow: function(input, inst) {
+                                            inst.dpDiv.removeClass('month-picker');
+                                            inst.dpDiv.find('.ui-datepicker-calendar').show();
+                                            setTimeout(function(){
+                                                var inputWidth = $(input).outerWidth();
+                                                inst.dpDiv.css('width', inputWidth + 'px');
+                                                inst.dpDiv.css('max-width', inputWidth + 'px');
+                                                inst.dpDiv.find('.ui-datepicker-prev, .ui-datepicker-next').hide();//이전 다음버튼 숨김
+                                            }, 0);
+                                        },
                                     });
                                 });
                             </script>
